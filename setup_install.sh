@@ -4,7 +4,7 @@
 # 2) connects to a local pacman cache to speed up install
 
 # install nfs-utils
-pacman -S nfs-utils
+pacman -S nfs-utils --noconfirm --needed
 
 # set up fstab with pacman share
 echo "INSERT FSTAB LINE" >> /etc/fstab

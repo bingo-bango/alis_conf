@@ -6,8 +6,11 @@
 # install nfs-utils
 pacman -S nfs-utils --noconfirm --needed
 
+# set host name for pacman cache server
+echo "172.16.0.42 pacserver" >> /etc/hosts
+
 # set up fstab with pacman share
-echo "INSERT FSTAB LINE" >> /etc/fstab
+echo "pacserver:/var/cache/pacman/pkg	/var/cache/pacman/pkg		nfs	noauto,nofail,x-systemd.automount,x-systemd.device-timeout=30,_netdev 0 0" >> /etc/fstab
 
 # mount share
 mount /var/pacman/pkg/cache

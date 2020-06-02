@@ -18,3 +18,4 @@
 # whoogle https://github.com/benbusby/whoogle-search
 # post.io (mail server)
 # openvpn
+# nextcloud

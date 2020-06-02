@@ -13,7 +13,7 @@ echo "172.16.0.42 pacserver" >> /etc/hosts
 echo "pacserver:/var/cache/pacman/pkg	/var/cache/pacman/pkg		nfs	noauto,nofail,x-systemd.automount,x-systemd.device-timeout=30,_netdev 0 0" >> /etc/fstab
 
 # mount share
-mount /var/pacman/pkg/cache
+mount /var/cache/pacman/pkg
 
 # notify
 echo "network pacman cache is ready!"

@@ -3,6 +3,9 @@
 # 1) installs nfs
 # 2) connects to a local pacman cache to speed up install
 
+# sync pacman
+pacman -Sy
+
 # install nfs-utils
 pacman -S nfs-utils --noconfirm --needed
 

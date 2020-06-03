@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # This script:
-# 1) installs nfs
-# 2) connects to a local pacman cache to speed up install
+# 1) syncs pacman
+# 2) connects to a local network pacman cache to speed up install
+# 3) pulls latest alis script
+# 4) pulls customised config files
 
 # sync pacman
 pacman -Sy
@@ -21,3 +23,8 @@ mount /var/cache/pacman/pkg
 # notify
 echo "network pacman cache is ready!"
 
+# pull latest alis from the repo
+curl https://raw.githubusercontent.com/picodotdev/alis/master/download.sh | bash
+
+# pull customised config files
+curl https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_latitude.conf

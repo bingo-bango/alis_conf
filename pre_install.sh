@@ -24,7 +24,7 @@ mount /var/cache/pacman/pkg
 echo "network pacman cache is ready!"
 
 # pull latest alis from the repo
-curl https://raw.githubusercontent.com/picodotdev/alis/master/download.sh | bash
+wget https://raw.githubusercontent.com/picodotdev/alis/master/download.sh | bash
 
 # pull customised config files
-curl https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_latitude.conf
+wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_latitude.conf

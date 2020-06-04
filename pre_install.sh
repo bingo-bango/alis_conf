@@ -5,12 +5,6 @@
 # 3) pulls latest alis script
 # 4) pulls customised config files
 
-# sync pacman
-#pacman -Sy
-
-# install nfs-utils
-#pacman -S nfs-utils --noconfirm --needed
-
 # set host name for pacman cache server
 echo "172.16.0.42 pacserver" >> /etc/hosts
 

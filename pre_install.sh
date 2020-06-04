@@ -23,8 +23,16 @@ mount /var/cache/pacman/pkg
 # notify
 echo "network pacman cache is ready!"
 
-# pull latest alis from the repo
+# pull latest alis download script from the repo
 wget https://raw.githubusercontent.com/picodotdev/alis/master/download.sh | bash
 
 # pull customised config files
 wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_latitude.conf
+
+# pull latest alis using download script
+bash download.sh
+
+# patch alis so that local pacman cache is used
+sed 's/pacstrap /mnt base base-devel linux/pacstrap -c /mnt base base-devel linux/g' alis.sh
+
+echo "Operation complete. Replace the alis.conf file with the customized one and run: bash alis.sh"

@@ -33,6 +33,6 @@ wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_latitud
 bash download.sh
 
 # patch alis so that local pacman cache is used
-sed 's/pacstrap /mnt base base-devel linux/pacstrap -c /mnt base base-devel linux/g' alis.sh
+sed -i 's/pacstrap/pacstrap -c/g' alis.sh
 
 echo "Operation complete. Replace the alis.conf file with the customized one and run: bash alis.sh"

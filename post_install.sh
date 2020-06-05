@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
-# This script performs the following post-installation tasks:
-# -configure data drive
-# -configure megasync
-# -deploy docker containers
-# -restore and enable systemd scheduled tasks
-# -restore scripts
-# etc
+# This script sets up the data drive
 
 function mount_data() {
   # configure and mount data drive
@@ -17,43 +11,3 @@ function mount_data() {
   echo "Mounting data drive..."
   mount /dev/mapper/encrypted_data /mnt/data  
 }
-
-function docker_config() {
-  # user namespace remapping
-  echo \
-"{
-  \"userns-remap\": \"default\"
-}" \
-  >> /etc/docker/daemon.json
-  
-  echo "dockremap:165536:4096" >> /etc/subuid
-  echo "dockremap:165536:4096" >> /etc/subgid
-  
-  systemctl restart docker.service    
-}
-
-function ssh_config() {
-  # stop sshd if running
-  systemctl start sshd.service
-  
-  # disable root login
-  echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
-  
-  # enable and start sshd
-  systemctl enable sshd.service
-  systemctl start sshd.service
-}
-
-
-# docker containers:
-# portainer
-# pihole
-# huginn
-# transmission
-# mosquitto
-# openhab
-# jabber
-# whoogle https://github.com/benbusby/whoogle-search
-# post.io (mail server)
-# openvpn
-# nextcloud

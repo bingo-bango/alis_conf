@@ -25,7 +25,7 @@ function docker_config() {
   # user namespace remapping
   echo \
 "{
-" userns-remap": \"default\"
+  \"userns-remap\": \"default\"
 }" \
   >> /etc/docker/daemon.json
   

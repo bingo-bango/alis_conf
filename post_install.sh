@@ -14,7 +14,7 @@ function mount_data() {
   mkdir /mnt/data
   chmod 777 -R /mnt/data
   echo "Unlocking data drive..."
-  cryptsetup luksOpen /dev/disk/by-uuid/<<INSERT UUID>> encrypted_data
+  cryptsetup luksOpen /dev/disk/by-uuid/insert_uuid encrypted_data
   echo "Mounting data drive..."
   mount /dev/mapper/encrypted_data /mnt/data
   
@@ -24,9 +24,9 @@ function docker_config() {
 
   # user namespace remapping
   echo \
-  "{
-  "userns-remap": "default"
-  }" \
+"{
+" userns-remap": \"default\"
+}" \
   >> /etc/docker/daemon.json
   
   echo "dockremap:165536:4096" >> /etc/subuid

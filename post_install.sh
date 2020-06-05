@@ -8,6 +8,7 @@
 # etc
 
 function mount_data() {
+
   # configure and mount data drive
   echo "Creating data drive mount point..."
   mkdir /mnt/data
@@ -16,7 +17,24 @@ function mount_data() {
   cryptsetup luksOpen /dev/disk/by-uuid/<<INSERT UUID>> encrypted_data
   echo "Mounting data drive..."
   mount /dev/mapper/encrypted_data /mnt/data
-}  
+  
+}
+
+function docker_config() {
+
+  # user namespace remapping
+  echo \
+  "{
+  "userns-remap": "default"
+  }" \
+  >> /etc/docker/daemon.json
+  
+  echo "dockremap:165536:4096" >> /etc/subuid
+  echo "dockremap:165536:4096" >> /etc/subgid
+  
+  systemctl restart docker.service  
+  
+}
 
 
 # docker containers:

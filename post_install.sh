@@ -8,7 +8,6 @@
 # etc
 
 function mount_data() {
-
   # configure and mount data drive
   echo "Creating data drive mount point..."
   mkdir /mnt/data
@@ -16,12 +15,10 @@ function mount_data() {
   echo "Unlocking data drive..."
   cryptsetup luksOpen /dev/disk/by-uuid/insert_uuid encrypted_data
   echo "Mounting data drive..."
-  mount /dev/mapper/encrypted_data /mnt/data
-  
+  mount /dev/mapper/encrypted_data /mnt/data  
 }
 
 function docker_config() {
-
   # user namespace remapping
   echo \
 "{
@@ -32,8 +29,19 @@ function docker_config() {
   echo "dockremap:165536:4096" >> /etc/subuid
   echo "dockremap:165536:4096" >> /etc/subgid
   
-  systemctl restart docker.service  
+  systemctl restart docker.service    
+}
+
+function ssh_config() {
+  # stop sshd if running
+  systemctl start sshd.service
   
+  # disable root login
+  echo "PermitRootLogin prohibit-password" >> /etc/ssh/sshd_config
+  
+  # enable and start sshd
+  systemctl enable sshd.service
+  systemctl start sshd.service
 }
 
 

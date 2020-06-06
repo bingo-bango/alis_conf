@@ -8,8 +8,8 @@ function mount_data() {
   chmod 777 -R /mnt/data
   echo "Unlocking data drive..."
   #cryptsetup luksOpen /dev/disk/by-uuid/insert_uuid encrypted_data
-  echo "172.16.0.42 pacserver" >> /etc/hosts
-  echo "latitude:/srv/nfs/data	/mnt/data		nfs	defaults,rsize=32768,wsize=32768,timeo=900,retrans=5,_netdev	0 0" >> /etc/fstab
+  echo "172.16.0.42 lat" >> /etc/hosts
+  echo "lat:/srv/nfs/data	/mnt/data		nfs	defaults,rsize=32768,wsize=32768,timeo=900,retrans=5,_netdev	0 0" >> /etc/fstab
   echo "Mounting data drive..."
   #mount /dev/mapper/encrypted_data /mnt/data
   mount /mnt/data

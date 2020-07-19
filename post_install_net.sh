@@ -7,12 +7,10 @@ function mount_data() {
   mkdir /mnt/data
   chmod 777 -R /mnt/data
   echo "Unlocking data drive..."
-  #cryptsetup luksOpen /dev/disk/by-uuid/insert_uuid encrypted_data
-  echo "172.16.0.42 lat" >> /etc/hosts
-  echo "lat:/srv/nfs/data	/mnt/data		nfs	defaults,rsize=32768,wsize=32768,timeo=900,retrans=5,_netdev	0 0" >> /etc/fstab
+  cryptsetup luksOpen /dev/disk/by-uuid/73cd4968-6492-4f07-9780-e12236581d5e encrypted_data
+  #echo "lat:/srv/nfs/data	/mnt/data		nfs	defaults,rsize=32768,wsize=32768,timeo=900,retrans=5,_netdev	0 0" >> /etc/fstab
   echo "Mounting data drive..."
-  #mount /dev/mapper/encrypted_data /mnt/data
-  mount /mnt/data
+  mount /dev/mapper/encrypted_data /mnt/data
 }
 
 function post_install() {

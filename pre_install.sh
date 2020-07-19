@@ -44,4 +44,4 @@ bash download.sh
   sed -i 's/pacstrap/pacstrap -c/g' alis.sh
   fi
 
-echo "Operation complete. Replace the alis.conf file with the customized one and run: bash alis.sh"
+echo "Operation complete. Replace the alis.conf file with the customized one [alis_latitude.conf] and run: bash alis.sh"

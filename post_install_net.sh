@@ -49,5 +49,6 @@ docker_config() {
 
 ssh_config
 docker_config
+wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/mount_data.sh
 
 echo "script is complete, now run docker deployment (bash docker_deploy)"

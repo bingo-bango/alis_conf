@@ -13,11 +13,6 @@ function mount_data() {
   mount /dev/mapper/encrypted_data /mnt/data
 }
 
-function post_install() {
-  cd /mnt/data/serverconfig
-  echo "ready to run post install scripts"
-  bash post_install
- }
  
  mount_data
- post_install
+

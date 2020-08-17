@@ -37,6 +37,7 @@ ssh_config() {
 docker_config() {
   echo "setting up docker parameters"
   # user namespace remapping
+  wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/docker_daemon
   cat docker_daemon >> /etc/docker/daemon.json  
   echo "dockremap:165536:4096" >> /etc/subuid
   echo "dockremap:165536:4096" >> /etc/subgid  

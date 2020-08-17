@@ -23,7 +23,8 @@ ssh_config() {
   # change ownership of ssh folder
   chown -hR peter /home/peter/.ssh
 
-  # copy ssh config file
+  # download and copy ssh config file
+  wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/sshd_config
   cat sshd_config > /etc/ssh/sshd_config
   
   # enable and start sshd

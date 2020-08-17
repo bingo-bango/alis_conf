@@ -14,8 +14,11 @@ ssh_config() {
   # create .ssh folder
   mkdir /home/peter/.ssh
   
+  # fetch public key
+  wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/peter.pub
+  
   # add ssh key to authorized hosts
-  cat elitebook.pub > /home/peter/.ssh/authorized_keys
+  cat peter.pub > /home/peter/.ssh/authorized_keys
 
   # change ownership of ssh folder
   chown -hR peter /home/peter/.ssh

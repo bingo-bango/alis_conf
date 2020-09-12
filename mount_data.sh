@@ -26,4 +26,4 @@ function create_share() {
 
 create_data
 mount_data
-share_data
+create_share

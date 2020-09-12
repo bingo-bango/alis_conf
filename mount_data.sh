@@ -1,18 +1,29 @@
 #!/usr/bin/env bash
 # This script sets up the data drive
 
-function mount_data() {
+function create_data() {
   # configure and mount data drive
   echo "Creating data drive mount point..."
   mkdir /data
   chmod 777 -R /data
+}
+
+function mount_data() {
   echo "Unlocking data drive..."
   cryptsetup luksOpen /dev/disk/by-uuid/73cd4968-6492-4f07-9780-e12236581d5e encrypted_data
-  echo "lat:/srv/nfs/data	/data		nfs	defaults,rsize=32768,wsize=32768,timeo=900,retrans=5,_netdev	0 0" >> /etc/fstab
-  echo "Mounting data drive..."
+   echo "Mounting data drive..."
   mount /dev/mapper/encrypted_data /data
 }
 
- 
- mount_data
+function create_share() {
+  echo "creating share directories"
+  mkdir -p /srv/nfs/shared_data
+  echo "mount share directories"
+  mount --bind /data/shared_data /srv/nfs/shared_data
+  echo "update fstab"
+  echo "/data/shared_data /srv/nfs/shared_data  none   bind   0   0"
+}
 
+create_data
+mount_data
+share_data

@@ -21,7 +21,7 @@ function create_share() {
   echo "mount share directories"
   mount --bind /data/shared_data /srv/nfs/shared_data
   echo "update fstab"
-  echo "/data/shared_data /srv/nfs/shared_data  none   bind   0   0"
+  echo "/data/shared_data /srv/nfs/shared_data  none   bind   0   0" >> /etc/fstab
 }
 
 create_data

@@ -36,3 +36,4 @@ function enable_nfs() {
 create_data
 mount_data
 create_share
+enable_nfs

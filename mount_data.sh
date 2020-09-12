@@ -24,6 +24,13 @@ function create_share() {
   echo "/data/shared_data /srv/nfs/shared_data  none   bind   0   0" >> /etc/fstab
 }
 
+function enable_nfs() {
+  echo "/srv/nfs/shared_data 192.168.1.0/24(rw,sync,nohide)" >> /etc/exports
+  exportfs -arv
+  systemctl start nfs-server.service
+  systemctl enable nfs-server.service  
+}
+
 create_data
 mount_data
 create_share

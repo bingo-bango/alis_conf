@@ -13,6 +13,7 @@ function mount_data() {
   cryptsetup luksOpen /dev/disk/by-uuid/73cd4968-6492-4f07-9780-e12236581d5e encrypted_data
    echo "Mounting data drive..."
   mount /dev/mapper/encrypted_data /data
+  mount --bind /data/shared_data /srv/nfs/shared_data
   echo "Screen blanking"
   setterm --blank force --term linux </dev/tty1
 }
@@ -22,8 +23,8 @@ function create_share() {
   mkdir -p /srv/nfs/shared_data
   echo "mount share directories"
   mount --bind /data/shared_data /srv/nfs/shared_data
-  echo "update fstab"
-  echo "/data/shared_data /srv/nfs/shared_data  none   bind   0   0" >> /etc/fstab
+  #echo "update fstab"
+  #echo "/data/shared_data /srv/nfs/shared_data  none   bind   0   0" >> /etc/fstab
 }
 
 function enable_nfs() {

@@ -47,6 +47,15 @@ docker_config() {
   echo "docker is ready to go"
 }
 
+misc_config() {
+  # stop lid making laptop sleep
+  echo "HandleLidSwitch=ignore" >> /etc/systemd/logind.conf
+  
+  # turn off screen after each reboot
+  
+
+}
+
 ssh_config
 docker_config
 wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/mount_data.sh

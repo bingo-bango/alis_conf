@@ -35,6 +35,7 @@ wget https://raw.githubusercontent.com/picodotdev/alis/master/download.sh | bash
 # pull customised config files
 wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_latitude.conf
 wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_T500.conf
+wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis-packages-T500.conf
 wget https://raw.githubusercontent.com/bingo-bango/alis_conf/master/alis_elitebook.conf
 
 # pull latest alis using download script
@@ -46,4 +47,4 @@ bash download.sh
   sed -i 's/pacstrap/pacstrap -c/g' alis.sh
   fi
 
-echo "Operation complete. Replace the alis.conf file with the customized one [alis_XXXX.conf] and run: bash alis.sh"
+echo "Operation complete. Replace the alis.conf and alis-packages.conf files with the customized ones, check them and run: bash alis.sh"
